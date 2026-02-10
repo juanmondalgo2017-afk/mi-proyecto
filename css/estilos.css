@@ -210,10 +210,18 @@ button {
 .corazon {
     position: fixed;
     top: -40px;
+    font-size: 24px;
+    pointer-events: none;
+    opacity: 1;
+
     animation: caer 5s linear forwards;
 }
 
 @keyframes caer {
+    from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
     to {
         transform: translateY(120vh) rotate(var(--rotacion));
         opacity: 0;

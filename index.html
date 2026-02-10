@@ -126,21 +126,40 @@ document.querySelectorAll(".hoja").forEach(hoja => {
 const btnSi = document.getElementById("btnSi");
 const btnNo = document.getElementById("btnNo");
 
-btnSi.addEventListener("click", lanzarCorazones);
+
 btnNo.addEventListener("mouseover", moverNo);
 btnNo.addEventListener("touchstart", moverNo);
 
-function lanzarCorazones() {
-    for (let i = 0; i < 30; i++) {
+function lanzarCorazones(x = null, y = null) {
+    for (let i = 0; i < 25; i++) {
         const corazon = document.createElement("div");
         corazon.className = "corazon";
         corazon.textContent = "💖";
-        corazon.style.left = Math.random() * 100 + "vw";
-        corazon.style.fontSize = 20 + Math.random() * 20 + "px";
+
+        // Posición inicial
+        const left = x !== null ? x : Math.random() * window.innerWidth;
+        corazon.style.left = left + "px";
+        corazon.style.top = (y !== null ? y : -40) + "px";
+
+        // Tamaño y rotación
+        corazon.style.fontSize = 18 + Math.random() * 22 + "px";
+        corazon.style.setProperty("--rotacion", Math.random() * 360 + "deg");
+        corazon.style.setProperty("--desvio", (Math.random() * 100 - 50) + "px");
+
         document.getElementById("lluvia-corazones").appendChild(corazon);
-        setTimeout(() => corazon.remove(), 6000);
+
+        setTimeout(() => corazon.remove(), 5000);
     }
 }
+
+/* Botón Sí */
+btnSi.addEventListener("click", () => lanzarCorazones());
+
+/* Click en pantalla (ideal para Android) */
+document.addEventListener("touchstart", (e) => {
+    const t = e.touches[0];
+    lanzarCorazones(t.clientX, t.clientY);
+});
 
 function moverNo() {
     btnNo.style.position = "absolute";
@@ -148,7 +167,6 @@ function moverNo() {
     btnNo.style.top = Math.random() * (window.innerHeight - 50) + "px";
 }
 </script>
-
 </body>
 </html>
 
