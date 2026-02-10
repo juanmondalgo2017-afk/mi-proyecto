@@ -1,0 +1,242 @@
+/* ================== RESET BÁSICO ================== */
+* {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ================== BODY ================== */
+body {
+    background: #1e1e1e;
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+/* ================== CONTENEDOR ================== */
+.dedicatoria {
+    background: rgba(255,255,255,0.12);
+    padding: 25px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 900px;
+    border-radius: 20px;
+}
+
+/* ================== TITULO ================== */
+.titulo-romantico {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3rem;
+    color: #ffb6c1;
+}
+
+/* ================== TEXTO ================== */
+.texto-carta {
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+/* ================== CARTA ================== */
+.carta {
+    width: 260px;
+    height: 360px;
+    margin: 30px auto;
+    position: relative;
+    perspective: 1200px;
+    overflow: hidden;
+}
+
+/* PORTADA */
+.portada {
+    position: absolute;
+    inset: 0;
+    transform-origin: left;
+    transition: transform 1s ease;
+    z-index: 3;
+}
+
+.portada img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+}
+
+/* INTERIOR */
+.interior {
+    position: absolute;
+    inset: 0;
+    background: #fff6f8;
+    border-radius: 16px;
+    padding: 15px;
+    color: #5a2a3c;
+    z-index: 1;
+}
+
+/* ABRIR CARTA */
+.carta.abierta .portada {
+    transform: rotateY(-120deg);
+}
+
+/* ================== FOTOS INTERIORES ================== */
+.fotos-interior {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.fotos-interior img {
+    width: 90px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* ================== HOJAS TE AMO ================== */
+.hojas-amor {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin: 35px 0;
+}
+
+.hoja {
+    width: 85px;
+    height: 115px;
+    position: relative;
+    perspective: 800px;
+}
+
+/* HOJA CERRADA */
+.hoja-cerrada,
+.hoja-abierta {
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
+    backface-visibility: hidden;
+}
+
+.hoja-cerrada {
+    z-index: 2;
+    transform-origin: left;
+    transition: transform 0.8s ease;
+}
+
+.hoja-cerrada img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* HOJA ABIERTA */
+.hoja-abierta {
+    background: #fffaf3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #c2185b;
+    z-index: 1;
+}
+
+/* ABRIR HOJA */
+.hoja.abierta .hoja-cerrada {
+    transform: rotateY(-110deg);
+}
+
+/* ================== MÚSICA ================== */
+.music-panel {
+    margin: 25px auto;
+    max-width: 320px;
+}
+
+.music-card {
+    background: rgba(255,255,255,0.95);
+    padding: 15px;
+    border-radius: 15px;
+    color: #5a3a3a;
+}
+
+.music-card h3 {
+    margin-top: 0;
+    color: #c2185b;
+}
+
+.music-card .lyrics {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* ================== BOTONES ================== */
+.botones {
+    margin-top: 25px;
+    position: relative;
+}
+
+button {
+    padding: 12px 22px;
+    border-radius: 25px;
+    border: none;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+#btnSi {
+    background: #ff4d6d;
+    color: white;
+}
+
+#btnNo {
+    background: #555;
+    color: white;
+    position: absolute;
+}
+
+/* ================== CORAZONES ================== */
+#lluvia-corazones {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 999;
+}
+
+.corazon {
+    position: fixed;
+    top: -40px;
+    animation: caer 5s linear forwards;
+}
+
+@keyframes caer {
+    to {
+        transform: translateY(120vh) rotate(var(--rotacion));
+        opacity: 0;
+    }
+}
+
+/* ================== RESPONSIVE ANDROID ================== */
+@media (max-width: 768px) {
+
+    .titulo-romantico {
+        font-size: 2.4rem;
+    }
+
+    .hojas-amor {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #btnNo {
+        position: relative;
+        margin-top: 15px;
+    }
+}
+
+
+
