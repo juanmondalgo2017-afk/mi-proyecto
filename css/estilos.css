@@ -236,8 +236,9 @@ button {
     }
 
     .hojas-amor {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: nowrap;
     }
 
     #btnNo {
